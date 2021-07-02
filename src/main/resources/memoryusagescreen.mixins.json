@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.morimori.mus.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "client": [
+    "ConnectScreenMixin",
+    "LevelLoadingScreenMixin",
+    "LoadingOverlayMixin",
+    "ProgressScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "MemoryUsageScreen-1.17-refmap.json"
+}
