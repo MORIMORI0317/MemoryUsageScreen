@@ -85,18 +85,18 @@ if (System.getenv('curesforgeapikey') != null && "${curesfg_id}" != "0") {
             id = "${curesfg_id}"
             changelog = ""
             releaseType = "release"
-            addGameVersion "${mc_version}"
+            addGameVersion "${minecraft_version}"
             mainArtifact(jar) {
-                displayName = "${archives_base_name}-${mc_version}-${mod_version}-Fabric"
+                displayName = "${archives_base_name}-${minecraft_version}-${mod_version}-Fabric"
                 relations {
                     embeddedLibrary 'cloth-config'
                 }
             }
             addArtifact(devJar) {
-                displayName = "${archives_base_name}-${mc_version}-${mod_version}-Fabric-dev"
+                displayName = "${archives_base_name}-${minecraft_version}-${mod_version}-Fabric-dev"
             }
             addArtifact(sourceJar) {
-                displayName = "${archives_base_name}-${mc_version}-${mod_version}-Fabric-source"
+                displayName = "${archives_base_name}-${minecraft_version}-${mod_version}-Fabric-source"
             }
         }
     }
@@ -106,10 +106,10 @@ if (System.getenv('modrinthapikey') != null && "${modrinth_id}" != "0") {
 
         token = System.getenv('modrinthapikey')
         projectId = "${modrinth_id}"
-        versionName = "${archives_base_name}-${mc_version}-${mod_version}-Fabric"
-        versionNumber = "${mc_version}-${mod_version}-Fabric"
+        versionName = "${archives_base_name}-${minecraft_version}-${mod_version}-Fabric"
+        versionNumber = "${minecraft_version}-${mod_version}-Fabric"
         uploadFile = jar
-        addGameVersion("${mc_version}")
+        addGameVersion("${minecraft_version}")
         addLoader('fabric')
         addFile(devJar)
         addFile(sourceJar)
