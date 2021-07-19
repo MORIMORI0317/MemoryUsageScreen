@@ -88,12 +88,15 @@ if (System.getenv('curesforgeapikey') != null && "${curesfg_id}" != "0") {
             addGameVersion "${mc_version}"
             mainArtifact(jar) {
                 displayName = "${archives_base_name}-${mc_version}-${mod_version}-Fabric"
+                relations {
+                    embeddedLibrary 'cloth-config'
+                }
             }
             addArtifact(devJar) {
-                displayName = "${mod_name}-${mc_version}-${mod_version}-Fabric-dev"
+                displayName = "${archives_base_name}-${mc_version}-${mod_version}-Fabric-dev"
             }
             addArtifact(sourceJar) {
-                displayName = "${mod_name}-${mc_version}-${mod_version}-Fabric-source"
+                displayName = "${archives_base_name}-${mc_version}-${mod_version}-Fabric-source"
             }
         }
     }
