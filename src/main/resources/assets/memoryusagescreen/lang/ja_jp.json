@@ -1,0 +1,7 @@
+{
+  "text.autoconfig.memoryusagescreen.title": "Memory Usage Screenの設定",
+  "text.autoconfig.memoryusagescreen.option.enableInitLoadingScreen": "初期ロード画面での表示を有効にする",
+  "text.autoconfig.memoryusagescreen.option.enableWorldLoadingScreen": "ワールドロード画面での表示を有効にする",
+  "text.autoconfig.memoryusagescreen.option.enableToggleMode": "切り替え表示モードを有効にする",
+  "key.memoryusagescreen.show": "メモリー使用量を表示"
+}

@@ -9,12 +9,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 
-public class RenderUtils {
+public class MemoryUsageOverlay extends GuiComponent {
     private static final ResourceLocation FONT_LOCATION = new ResourceLocation("textures/font/ascii.png");
     private static final Minecraft mc = Minecraft.getInstance();
-    private static float maxBar;
+    private float maxBar;
 
-    public static void renderMemoryBar(PoseStack poseStack, float alpha, boolean useFont, boolean bloackGrond) {
+    public void render(PoseStack poseStack, float alpha, boolean useFont, boolean bloackGrond) {
         int colw = FastColor.ARGB32.color(Math.round(alpha * 255.0F), 255, 255, 255);
         long max = Runtime.getRuntime().maxMemory();
         long total = Runtime.getRuntime().totalMemory();
@@ -43,19 +43,23 @@ public class RenderUtils {
         renderCenterString("Memory Used / Total", poseStack, sw / 2, sy - 10, 1, 1, 1, alpha, useFont);
 
         if (bloackGrond)
-            fill(poseStack, sx, sy, w, h, FastColor.ARGB32.color(Math.round(alpha * 255.0F), 0, 0, 0));
+            cfill(poseStack, sx, sy, w, h, FastColor.ARGB32.color(Math.round(alpha * 255.0F), 0, 0, 0));
 
-        fill(poseStack, sx, sy, 1, h, colw);
-        fill(poseStack, sx + w - 1, sy, 1, h, colw);
-        fill(poseStack, sx + 1, sy, w - 2, 1, colw);
-        fill(poseStack, sx + 1, sy + h - 1, w - 2, 1, colw);
-        fill(poseStack, sx + 2, sy + 2, (int) ((w - 4) * currentUsage), h - 4, colmem);
-        fill(poseStack, sx + 2 + (int) ((w - 4) * maxBar), sy + 1, 1, h - 2, FastColor.ARGB32.color(Math.round(alpha * 255.0F), 0, 0, 255));
+        cfill(poseStack, sx, sy, 1, h, colw);
+        cfill(poseStack, sx + w - 1, sy, 1, h, colw);
+        cfill(poseStack, sx + 1, sy, w - 2, 1, colw);
+        cfill(poseStack, sx + 1, sy + h - 1, w - 2, 1, colw);
+        cfill(poseStack, sx + 2, sy + 2, (int) ((w - 4) * currentUsage), h - 4, colmem);
+        cfill(poseStack, sx + 2 + (int) ((w - 4) * maxBar), sy + 1, 1, h - 2, FastColor.ARGB32.color(Math.round(alpha * 255.0F), 0, 0, 255));
 
         renderCenterString(String.format("%03d/%03dMB", bytesToMegabytes(usage), bytesToMegabytes(max)), poseStack, sw / 2, sy + 2, 1, 1, 1, alpha, useFont);
     }
 
-    private static void renderCenterString(String str, PoseStack poseStack, int x, int y, float r, float g, float b, float a, boolean useFont) {
+    private void cfill(PoseStack poseStack, int x, int y, int w, int h, int col) {
+        fill(poseStack, x, y, x + w, y + h, col);
+    }
+
+    private void renderCenterString(String str, PoseStack poseStack, int x, int y, float r, float g, float b, float a, boolean useFont) {
         if (!useFont)
             str = str.toUpperCase();
 
@@ -69,11 +73,7 @@ public class RenderUtils {
         }
     }
 
-    private static void fill(PoseStack poseStack, int x, int y, int w, int h, int col) {
-        GuiComponent.fill(poseStack, x, y, x + w, y + h, col);
-    }
-
-    private static void renderNoFontString(String str, PoseStack poseStack, int x, int y, float alpha, float r, float g, float b) {
+    private void renderNoFontString(String str, PoseStack poseStack, int x, int y, float alpha, float r, float g, float b) {
         for (int a = 0; a < str.length(); a++) {
             char ch = str.charAt(a);
             if (ch > 0xFF)
@@ -84,11 +84,11 @@ public class RenderUtils {
         }
     }
 
-    private static long bytesToMegabytes(long l) {
+    private long bytesToMegabytes(long l) {
         return l / 1024L / 1024L;
     }
 
-    public static void drawTexture(ResourceLocation location, PoseStack psstack, int x, int y, int textureStartX, int textureStartY, int textureFinishWidth, int textureFinishHeight, int textureSizeX, int textureSizeY, float r, float g, float b, float a) {
+    private void drawTexture(ResourceLocation location, PoseStack psstack, int x, int y, int textureStartX, int textureStartY, int textureFinishWidth, int textureFinishHeight, int textureSizeX, int textureSizeY, float r, float g, float b, float a) {
         psstack.pushPose();
         RenderSystem.setShaderColor(r, g, b, a);
         RenderSystem.setShaderTexture(0, location);
@@ -101,8 +101,7 @@ public class RenderUtils {
         psstack.popPose();
     }
 
-    public static void resetMemoryBar() {
+    public void reset() {
         maxBar = 0;
     }
-
 }

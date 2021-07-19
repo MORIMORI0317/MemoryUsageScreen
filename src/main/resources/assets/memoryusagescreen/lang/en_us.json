@@ -1,0 +1,8 @@
+{
+  "text.autoconfig.memoryusagescreen.title": "Memory Usage Screen Config",
+  "text.autoconfig.memoryusagescreen.option.enableInitLoadingScreen": "Enable display on the initial loading screen",
+  "text.autoconfig.memoryusagescreen.option.enableWorldLoadingScreen": "Enable display on the world loading screen",
+  "text.autoconfig.memoryusagescreen.option.enableToggleMode": "Enable toggle display mode",
+  "key.categories.memoryusagescreen": "Memory Usage Screen",
+  "key.memoryusagescreen.show": "Show memory usage"
+}

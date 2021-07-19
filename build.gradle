@@ -1,6 +1,10 @@
+import com.modrinth.minotaur.TaskModrinthUpload
+
 plugins {
     id 'fabric-loom' version '0.8-SNAPSHOT'
     id 'maven-publish'
+    id 'com.matthewprenger.cursegradle' version '1.4.0'
+    id "com.modrinth.minotaur" version "1.2.1"
 }
 
 sourceCompatibility = JavaVersion.VERSION_16
@@ -9,9 +13,12 @@ targetCompatibility = JavaVersion.VERSION_16
 archivesBaseName = "${project.archives_base_name}-${project.minecraft_version}"
 version = project.mod_version
 group = project.maven_group
-
+minecraft {
+    accessWidener = file("src/main/resources/memoryusagescreen.accesswidener")
+}
 repositories {
-
+    maven { url "https://maven.shedaniel.me/" }
+    maven { url "https://maven.terraformersmc.com/releases/" }
 }
 
 dependencies {
@@ -19,6 +26,13 @@ dependencies {
     mappings minecraft.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    modApi include("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
+        exclude(group: "net.fabricmc.fabric-api")
+    }
+
+    modApi "com.terraformersmc:modmenu:${project.modmenu_version}"
+
 }
 
 processResources {
@@ -62,5 +76,39 @@ publishing {
 
     repositories {
 
+    }
+}
+if (System.getenv('curesforgeapikey') != null && "${curesfg_id}" != "0") {
+    curseforge {
+        apiKey = System.getenv('curesforgeapikey')
+        project {
+            id = "${curesfg_id}"
+            changelog = ""
+            releaseType = "release"
+            addGameVersion "${mc_version}"
+            mainArtifact(jar) {
+                displayName = "${archives_base_name}-${mc_version}-${mod_version}-Fabric"
+            }
+            addArtifact(devJar) {
+                displayName = "${mod_name}-${mc_version}-${mod_version}-Fabric-dev"
+            }
+            addArtifact(sourceJar) {
+                displayName = "${mod_name}-${mc_version}-${mod_version}-Fabric-source"
+            }
+        }
+    }
+}
+if (System.getenv('modrinthapikey') != null && "${modrinth_id}" != "0") {
+    task publishModrinth(type: TaskModrinthUpload) {
+
+        token = System.getenv('modrinthapikey')
+        projectId = "${modrinth_id}"
+        versionName = "${archives_base_name}-${mc_version}-${mod_version}-Fabric"
+        versionNumber = "${mc_version}-${mod_version}-Fabric"
+        uploadFile = jar
+        addGameVersion("${mc_version}")
+        addLoader('fabric')
+        addFile(devJar)
+        addFile(sourceJar)
     }
 }
