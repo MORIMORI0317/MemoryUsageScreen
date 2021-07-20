@@ -1,10 +1,8 @@
-import com.modrinth.minotaur.TaskModrinthUpload
-
 plugins {
     id 'fabric-loom' version '0.8-SNAPSHOT'
     id 'maven-publish'
     id 'com.matthewprenger.cursegradle' version '1.4.0'
-    id "com.modrinth.minotaur" version "1.2.1"
+    id "com.modrinth.minotaur" version "1.1.0"
 }
 
 sourceCompatibility = JavaVersion.VERSION_16
@@ -96,7 +94,7 @@ if (System.getenv('curesforgeapikey') != null && "${curesfg_id}" != "0") {
     }
 }
 if (System.getenv('modrinthapikey') != null && "${modrinth_id}" != "0") {
-    task publishModrinth(type: TaskModrinthUpload) {
+    task publishModrinth(type: com.modrinth.minotaur.TaskModrinthUpload) {
 
         token = System.getenv('modrinthapikey')
         projectId = "${modrinth_id}"
