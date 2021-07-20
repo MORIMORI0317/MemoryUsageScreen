@@ -52,13 +52,11 @@ java {
 
     withSourcesJar()
 }
-
 jar {
     from("LICENSE") {
         rename { "${it}_${project.archivesBaseName}" }
     }
 }
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -84,7 +82,7 @@ if (System.getenv('curesforgeapikey') != null && "${curesfg_id}" != "0") {
             changelog = ""
             releaseType = "release"
             addGameVersion "${minecraft_version}"
-            mainArtifact(jar) {
+            mainArtifact(file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")) {
                 displayName = "${archives_base_name}-${minecraft_version}-${mod_version}-Fabric"
                 relations {
                     embeddedLibrary 'cloth-config'
@@ -100,7 +98,7 @@ if (System.getenv('modrinthapikey') != null && "${modrinth_id}" != "0") {
         projectId = "${modrinth_id}"
         versionName = "${archives_base_name}-${minecraft_version}-${mod_version}-Fabric"
         versionNumber = "${minecraft_version}-${mod_version}-Fabric"
-        uploadFile = jar
+        uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
         addGameVersion("${minecraft_version}")
         addLoader('fabric')
     }
