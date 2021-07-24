@@ -1,0 +1,13 @@
+modLoader = "javafml"
+loaderVersion = "[37,)"
+license = "LGPL v3"
+[[mods]]
+modId = "memoryusagescreen"
+version = "${file.jarVersion}"
+displayName = "Memory Usage Screen"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/memory-usage-screen"
+logoFile = "logo.png"
+authors = "MORIMORI0317"
+description = '''
+The Ikisugi Memory Usage Screen MOD
+'''
