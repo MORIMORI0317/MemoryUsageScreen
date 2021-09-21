@@ -2,6 +2,8 @@ package net.morimori.mus;
 
 import org.lwjgl.glfw.GLFW;
 
+import de.klotzi111.ktig.api.KTIG;
+import de.klotzi111.ktig.api.KeyBindingTriggerPoints;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.fabricmc.api.ClientModInitializer;
@@ -30,5 +32,9 @@ public class MemoryUsageScreen implements ClientModInitializer {
 	public void onInitializeClient() {
 		CONFIG = AutoConfig.register(MUSConfig.class, Toml4jConfigSerializer::new).getConfig();
 		KeyBindingHelper.registerKeyBinding(SHOW_MEMORYUSAGE);
+		
+		// with MAIN_WINDOW_BIT the keybinding will now be triggered always whether there is a gui or not
+		// to not receive the trigger twice when there is no gui we also use NO_VANILLA_BIT
+		KTIG.registerKeyBindingForTriggerPoints(SHOW_MEMORYUSAGE, KeyBindingTriggerPoints.MAIN_WINDOW_BIT | KeyBindingTriggerPoints.NO_VANILLA_BIT);
 	}
 }

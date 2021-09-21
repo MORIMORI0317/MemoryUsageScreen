@@ -15,6 +15,7 @@ minecraft {
     accessWidener = file("src/main/resources/memoryusagescreen.accesswidener")
 }
 repositories {
+	mavenLocal()
     maven { url "https://maven.shedaniel.me/" }
     maven { url "https://maven.terraformersmc.com/releases/" }
 }
@@ -31,6 +32,10 @@ dependencies {
 
     modApi "com.terraformersmc:modmenu:${project.modmenu_version}"
 
+	modApi "de.klotzi111:KTIG:1+"
+	
+	//Bundling
+	include "de.klotzi111:KTIG:1+"
 }
 
 processResources {
