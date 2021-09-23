@@ -7,6 +7,7 @@ import net.minecraft.client.gui.screens.LoadingOverlay;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.morimori.mus.LoadingTexture;
+import net.morimori.mus.MemoryUsageManager;
 import net.morimori.mus.MemoryUsageScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -23,16 +24,14 @@ public class LoadingOverlayMixin {
 
     @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screens/LoadingOverlay;drawProgressBar(Lcom/mojang/blaze3d/vertex/PoseStack;IIIIF)V"))
     private void render(PoseStack poseStack, int i, int j, float f, CallbackInfo ci) {
-        if (MemoryUsageScreen.CONFIG.enableInitLoadingScreen && !MemoryUsageScreen.enableShowMemoryUsage) {
-            long m = Util.getMillis();
-            float g = this.fadeOutStart > -1L ? (float) (m - this.fadeOutStart) / 1000.0F : -1.0F;
-            MemoryUsageScreen.overlay.render(poseStack, 1.0F - Mth.clamp(g, 0.0F, 1.0F), false, false);
-        }
+        long m = Util.getMillis();
+        float g = this.fadeOutStart > -1L ? (float) (m - this.fadeOutStart) / 1000.0F : -1.0F;
+        MemoryUsageManager.getInstance().onLoadingRender(poseStack, 1.0F - Mth.clamp(g, 0.0F, 1.0F), false, false);
     }
 
     @Inject(method = "registerTextures", at = @At("HEAD"))
     private static void registerTextures(Minecraft minecraft, CallbackInfo ci) {
-        if (MemoryUsageScreen.CONFIG.enableInitLoadingScreen)
+        if (MemoryUsageScreen.isConfigEnableInitLoadingScreen())
             mc.getTextureManager().register(FONT_LOCATION, new LoadingTexture(FONT_LOCATION));
     }
 }

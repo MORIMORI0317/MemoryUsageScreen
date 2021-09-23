@@ -4,15 +4,9 @@
   "package": "net.morimori.mus.mixin",
   "compatibilityLevel": "JAVA_16",
   "client": [
-    "ConnectScreenMixin",
-    "GameRendererMixin",
-    "LevelLoadingScreenMixin",
-    "LoadingOverlayMixin",
-    "MinecraftMixin",
-    "ProgressScreenMixin"
+    "LoadingOverlayMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-  },
-  "refmap": "MemoryUsageScreen-1.17-refmap.json"
+  }
 }

@@ -1,0 +1,10 @@
+modLoader="javafml"
+loaderVersion="[37,)"
+license="GNU LGPLv3"
+[[mods]]
+modId="memoryusagescreen"
+version="${file.jarVersion}"
+displayName="Memory Usage Screen"
+logoFile="icon.png"
+authors="MORIMORI0317"
+description="This mod displays a memory usage bar\nThe Ikisugi MOD..."

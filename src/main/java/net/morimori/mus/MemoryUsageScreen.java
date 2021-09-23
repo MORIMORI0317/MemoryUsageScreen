@@ -1,34 +1,37 @@
 package net.morimori.mus;
 
+import net.minecraft.client.KeyMapping;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fmlclient.registry.ClientRegistry;
 import org.lwjgl.glfw.GLFW;
 
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.minecraft.client.KeyMapping;
+@Mod(MemoryUsageScreen.MODID)
+public class MemoryUsageScreen {
+    public static final String MODID = "memoryusagescreen";
+    public static final KeyMapping showMemoryBarKey = new KeyMapping("key.memoryusagescreen.show", GLFW.GLFW_KEY_U, "key.categories.memoryusagescreen");
 
-public class MemoryUsageScreen implements ClientModInitializer {
-	public static final String MODID = "memoryusagescreen";
-	public static final MemoryUsageOverlay overlay = new MemoryUsageOverlay();
-	public static final KeyMapping SHOW_MEMORYUSAGE = new KeyMapping("key.memoryusagescreen.show", GLFW.GLFW_KEY_U, "key.categories.memoryusagescreen");
-	public static MUSConfig CONFIG;
-	public static boolean enableShowMemoryUsage;
 
-	public static void toggleShowMemoryUsage() {
-		setShowMemoryUsageEnabled(!enableShowMemoryUsage);
-	}
+    public MemoryUsageScreen() {
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+    }
 
-	public static void setShowMemoryUsageEnabled(boolean enabled) {
-		if (!enabled && enableShowMemoryUsage) {
-			overlay.reset();
-		}
-		enableShowMemoryUsage = enabled;
-	}
+    private void doClientStuff(final FMLClientSetupEvent event) {
+        MinecraftForge.EVENT_BUS.register(ClientHandler.class);
+        ClientRegistry.registerKeyBinding(showMemoryBarKey);
+    }
 
-	@Override
-	public void onInitializeClient() {
-		CONFIG = AutoConfig.register(MUSConfig.class, Toml4jConfigSerializer::new).getConfig();
-		KeyBindingHelper.registerKeyBinding(SHOW_MEMORYUSAGE);
-	}
+    public static boolean isConfigEnableInitLoadingScreen() {
+        return true;
+    }
+
+    public static boolean isConfigEnableWorldLoadingScreen() {
+        return true;
+    }
+
+    public static boolean isConfigEnableToggleMode() {
+        return true;
+    }
 }
