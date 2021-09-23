@@ -16,6 +16,7 @@ public class MemoryUsageScreen {
 
     public MemoryUsageScreen() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+        ClientConfig.init();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -24,14 +25,14 @@ public class MemoryUsageScreen {
     }
 
     public static boolean isConfigEnableInitLoadingScreen() {
-        return true;
+        return ClientConfig.enableInitLoadingScreen.get();
     }
 
     public static boolean isConfigEnableWorldLoadingScreen() {
-        return true;
+        return ClientConfig.enableWorldLoadingScreen.get();
     }
 
     public static boolean isConfigEnableToggleMode() {
-        return true;
+        return ClientConfig.enableToggleMode.get();
     }
 }

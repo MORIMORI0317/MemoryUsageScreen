@@ -1,4 +1,4 @@
-apply from: "../GradleTemplate/minecraft/1.17.1/forge_mixin.gradle"
+apply from: "https://raw.githubusercontent.com/TeamFelnull/GradleTemplate/main/minecraft/1.17.1/forge_mixin.gradle"
 
 buildscript {
     repositories {
