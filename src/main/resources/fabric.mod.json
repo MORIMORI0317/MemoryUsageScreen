@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "memoryusagescreen",
+  "version": "${version}",
+  "name": "Memory Usage Screen",
+  "description": "The Ikisugi Memory Usage Screen MOD",
+  "authors": [
+    "MORIMORI0317"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/memory-usage-screen-fabric",
+    "sources": "https://github.com/MORIMORI0317/MemoryUsageScreen",
+    "issues": "https://github.com/MORIMORI0317/MemoryUsageScreen/issues"
+  },
+  "license": "LGPL v3",
+  "icon": "assets/memoryusagescreen/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "net.morimori0317.mus.MemoryUsageScreen"
+    ],
+    "modmenu": [
+      "net.morimori0317.mus.integration.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "memoryusagescreen.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.18.x",
+    "java": ">=17"
+  },
+  "accessWidener": "memoryusagescreen.accesswidener"
+}

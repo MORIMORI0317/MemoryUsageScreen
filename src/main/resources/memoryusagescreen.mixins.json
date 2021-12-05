@@ -4,10 +4,15 @@
   "package": "net.morimori0317.mus.mixin",
   "compatibilityLevel": "JAVA_17",
   "client": [
-    "LoadingOverlayMixin"
+    "ConnectScreenMixin",
+    "GameRendererMixin",
+    "LevelLoadingScreenMixin",
+    "LoadingOverlayMixin",
+    "MinecraftMixin",
+    "ProgressScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
-  "refmap": "memoryusagescreen.refmap.json"
+  "refmap": "MemoryUsageScreen-1.18-refmap.json"
 }

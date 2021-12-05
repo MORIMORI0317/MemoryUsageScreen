@@ -1,38 +1,37 @@
 package net.morimori0317.mus;
 
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
+import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.KeyMapping;
-import net.minecraftforge.client.ClientRegistry;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.lwjgl.glfw.GLFW;
 
-@Mod(MemoryUsageScreen.MODID)
-public class MemoryUsageScreen {
+public class MemoryUsageScreen implements ClientModInitializer {
     public static final String MODID = "memoryusagescreen";
-    public static final KeyMapping showMemoryBarKey = new KeyMapping("key.memoryusagescreen.show", GLFW.GLFW_KEY_U, "key.categories.memoryusagescreen");
+    public static final MemoryUsageOverlay overlay = new MemoryUsageOverlay();
+    public static final KeyMapping SHOW_MEMORYUSAGE = new KeyMapping("key.memoryusagescreen.show", GLFW.GLFW_KEY_U, "key.categories.memoryusagescreen");
+    public static MUSConfig CONFIG;
+    public static boolean enableShowMemoryUsage;
 
-
-    public MemoryUsageScreen() {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-        ClientConfig.init();
+    public static void toggleShowMemoryUsage() {
+        setShowMemoryUsageEnabled(!enableShowMemoryUsage);
     }
 
-    private void doClientStuff(final FMLClientSetupEvent event) {
-        MinecraftForge.EVENT_BUS.register(ClientHandler.class);
-        ClientRegistry.registerKeyBinding(showMemoryBarKey);
+    public static void setShowMemoryUsageEnabled(boolean enabled) {
+        if (!enabled && enableShowMemoryUsage) {
+            overlay.reset();
+        }
+        enableShowMemoryUsage = enabled;
     }
 
-    public static boolean isConfigEnableInitLoadingScreen() {
-        return ClientConfig.enableInitLoadingScreen.get();
-    }
+    @Override
+    public void onInitializeClient() {
+        CONFIG = AutoConfig.register(MUSConfig.class, Toml4jConfigSerializer::new).getConfig();
+        KeyBindingHelper.registerKeyBinding(SHOW_MEMORYUSAGE);
 
-    public static boolean isConfigEnableWorldLoadingScreen() {
-        return ClientConfig.enableWorldLoadingScreen.get();
-    }
-
-    public static boolean isConfigEnableToggleMode() {
-        return ClientConfig.enableToggleMode.get();
+        // with MAIN_WINDOW_BIT the keybinding will now be triggered always whether there is a gui or not
+        // to not receive the trigger twice when there is no gui we also use NO_VANILLA_BIT
+       // KTIG.registerKeyBindingForTriggerPoints(SHOW_MEMORYUSAGE, KeyBindingTriggerPoints.MAIN_WINDOW_BIT | KeyBindingTriggerPoints.NO_VANILLA_BIT);
     }
 }

@@ -15,7 +15,6 @@ public class MemoryUsageOverlay extends GuiComponent {
     private float maxBar;
 
     public void render(PoseStack poseStack, float alpha, boolean useFont, boolean bloackGrond) {
-        poseStack.pushPose();
         int colw = FastColor.ARGB32.color(Math.round(alpha * 255.0F), 255, 255, 255);
         long max = Runtime.getRuntime().maxMemory();
         long total = Runtime.getRuntime().totalMemory();
@@ -58,7 +57,6 @@ public class MemoryUsageOverlay extends GuiComponent {
         cfill(poseStack, sx + 2 + (int) ((w - 4) * currentAllocated), sy + 1, 1, h - 2, FastColor.ARGB32.color(Math.round(alpha * 255.0F), 255, 0, 0));
 
         renderCenterString(String.format("%03d/%03dMB", bytesToMegabytes(usage), bytesToMegabytes(max)), poseStack, sw / 2, sy + 2, 1, 1, 1, alpha, useFont);
-        poseStack.popPose();
     }
 
     private void cfill(PoseStack poseStack, int x, int y, int w, int h, int col) {

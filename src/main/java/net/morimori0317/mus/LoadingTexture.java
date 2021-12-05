@@ -1,6 +1,5 @@
 package net.morimori0317.mus;
 
-
 import com.mojang.blaze3d.platform.NativeImage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.SimpleTexture;
