@@ -1,4 +1,4 @@
-package net.morimori.mus;
+package net.morimori0317.mus;
 
 
 import com.mojang.blaze3d.platform.NativeImage;

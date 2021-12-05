@@ -1,4 +1,4 @@
-package net.morimori.mus;
+package net.morimori0317.mus;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.ModLoadingContext;

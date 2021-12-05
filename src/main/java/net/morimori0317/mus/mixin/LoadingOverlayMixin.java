@@ -1,4 +1,4 @@
-package net.morimori.mus.mixin;
+package net.morimori0317.mus.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.Util;
@@ -6,9 +6,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.LoadingOverlay;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.morimori.mus.LoadingTexture;
-import net.morimori.mus.MemoryUsageManager;
-import net.morimori.mus.MemoryUsageScreen;
+import net.morimori0317.mus.LoadingTexture;
+import net.morimori0317.mus.MemoryUsageManager;
+import net.morimori0317.mus.MemoryUsageScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;

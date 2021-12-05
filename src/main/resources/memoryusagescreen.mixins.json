@@ -1,8 +1,8 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.morimori.mus.mixin",
-  "compatibilityLevel": "JAVA_16",
+  "package": "net.morimori0317.mus.mixin",
+  "compatibilityLevel": "JAVA_17",
   "client": [
     "LoadingOverlayMixin"
   ],

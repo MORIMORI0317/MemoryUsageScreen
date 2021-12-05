@@ -1,17 +1,17 @@
-package net.morimori.mus;
+package net.morimori0317.mus;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.screens.ConnectScreen;
 import net.minecraft.client.gui.screens.LevelLoadingScreen;
 import net.minecraft.client.gui.screens.ProgressScreen;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class ClientHandler {
     @SubscribeEvent
-    public static void onKeyPress(GuiScreenEvent.KeyboardKeyPressedEvent e) {
+    public static void onKeyPress(ScreenEvent.KeyboardKeyPressedEvent e) {
         MemoryUsageManager.getInstance().onGUIKeyPress(e.getKeyCode());
     }
 
@@ -28,15 +28,15 @@ public class ClientHandler {
     }
 
     @SubscribeEvent
-    public static void onGuiRender(GuiScreenEvent.DrawScreenEvent e) {
-        Screen screen = e.getGui();
+    public static void onGuiRender(ScreenEvent.DrawScreenEvent e) {
+        Screen screen = e.getScreen();
         if (screen instanceof ConnectScreen || screen instanceof LevelLoadingScreen || screen instanceof ProgressScreen)
-            MemoryUsageManager.getInstance().onWorldLoadingRender(e.getMatrixStack());
+            MemoryUsageManager.getInstance().onWorldLoadingRender(e.getPoseStack());
     }
 
     @SubscribeEvent
-    public static void onGuiInit(GuiScreenEvent.InitGuiEvent e) {
-        Screen screen = e.getGui();
+    public static void onGuiInit(ScreenEvent.InitScreenEvent e) {
+        Screen screen = e.getScreen();
         if (screen instanceof ConnectScreen || screen instanceof LevelLoadingScreen || screen instanceof ProgressScreen)
             MemoryUsageManager.getInstance().onWorldLoadingReset();
     }
