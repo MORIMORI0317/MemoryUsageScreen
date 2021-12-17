@@ -1,8 +1,8 @@
 {
-  "text.autoconfig.memoryusagescreen.title": "Настройки Memory Usage Screen",
-  "text.autoconfig.memoryusagescreen.option.enableInitLoadingScreen": "Включить отображение на экране загрузки игры",
-  "text.autoconfig.memoryusagescreen.option.enableWorldLoadingScreen": "Включить отображение на экране загрузки мира",
-  "text.autoconfig.memoryusagescreen.option.enableToggleMode": "Режим переключения отображения по нажатию",
+  "text.autoconfig.memoryusagescreen.title": "Конфигурация Memory Usage Screen",
+  "text.autoconfig.memoryusagescreen.option.enableInitLoadingScreen": "Включить отображение на начальном загрузочном экране.",
+  "text.autoconfig.memoryusagescreen.option.enableWorldLoadingScreen": "Включить отображение на экране загрузки мира.",
+  "text.autoconfig.memoryusagescreen.option.enableToggleMode": "Включить переключение режима отображения.",
   "key.categories.memoryusagescreen": "Memory Usage Screen",
-  "key.memoryusagescreen.show": "Показать использование памяти"
+  "key.memoryusagescreen.show": "Показывать использование памяти."
 }
