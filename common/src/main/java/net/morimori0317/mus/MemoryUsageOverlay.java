@@ -10,7 +10,7 @@ import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 
 public class MemoryUsageOverlay extends GuiComponent {
-    private static final ResourceLocation FONT_LOCATION = new ResourceLocation(MemoryUsageScreen.MODID, "fonts");
+    public static final ResourceLocation FONT_LOCATION = new ResourceLocation(MemoryUsageScreen.MODID, "fonts");
     private static final Minecraft mc = Minecraft.getInstance();
     private float maxBar;
 
