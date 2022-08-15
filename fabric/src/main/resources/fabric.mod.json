@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "memoryusagescreen",
+  "version": "${version}",
+  "name": "Memory Usage Screen",
+  "description": "This mod displays a memory usage bar\nThe ikisugi memory bar MOD...",
+  "authors": [
+    "MORIMORI0317"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/memory-usage-screen-fabric",
+    "sources": "https://github.com/MORIMORI0317/MemoryUsageScreen",
+    "issues": "https://github.com/MORIMORI0317/MemoryUsageScreen/issues"
+  },
+  "license": "GNU LGPLv3",
+  "icon": "assets/memoryusagescreen/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.morimori0317.mus.fabric.MemoryUsageScreenFabric"
+    ],
+    "modmenu": [
+      "net.morimori0317.mus.fabric.integration.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "memoryusagescreen-common.mixins.json"
+  ],
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.19"
+  }
+}

@@ -1,0 +1,32 @@
+modLoader = "javafml"
+loaderVersion = "[41,)"
+issueTrackerURL = "https://github.com/MORIMORI0317/MemoryUsageScreen/issues"
+license = "GNU LGPLv3"
+
+[[mods]]
+modId = "memoryusagescreen"
+version = "${version}"
+displayName = "Memory Usage Screen"
+authors = "MORIMORI0317"
+description = '''
+This mod displays a memory usage bar
+The ikisugi memory bar MOD...
+'''
+logoFile="icon.png"
+
+[modproperties.memoryusagescreen]
+catalogueImageIcon = "icon.png"
+
+[[dependencies.memoryusagescreen]]
+modId = "forge"
+mandatory = true
+versionRange = "[41,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.memoryusagescreen]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.19,)"
+ordering = "NONE"
+side = "BOTH"
