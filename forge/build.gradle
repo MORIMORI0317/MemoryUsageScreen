@@ -117,7 +117,7 @@ if (System.getenv('modrinthapikey') != null && "${modrinth_id}" != '') {
         versionNumber = "${rootProject.minecraft_version}-${project.mod_version}-Forge"
         versionType = "${project.release_type}"
         uploadFile = file("${project.buildDir}/libs/${rootProject.archives_base_name}-${project.name}-mc${rootProject.minecraft_version}-${project.mod_version}.jar")
-        gameVersions = project.support_versions.split(",")
+        gameVersions = List.of(project.support_versions.split(","))
         loaders = ["forge"]
     }
 }
