@@ -9,6 +9,7 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.VanillaPackResources;
 import net.minecraft.server.packs.resources.ResourceManager;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -24,7 +25,12 @@ public class LoadingTexture extends SimpleTexture {
         Minecraft minecraft = Minecraft.getInstance();
         VanillaPackResources vanillaPackResources = minecraft.getVanillaPackResources();
 
-        try (InputStream inputStream = vanillaPackResources.getResource(PackType.CLIENT_RESOURCES, location).get()) {
+        var ioSp = vanillaPackResources.getResource(PackType.CLIENT_RESOURCES, location);
+
+        if (ioSp == null)
+            return new TextureImage(new FileNotFoundException(location.toString()));
+
+        try (InputStream inputStream = ioSp.get()) {
             return new TextureImage(new TextureMetadataSection(true, true), NativeImage.read(inputStream));
         } catch (IOException ex) {
             return new TextureImage(ex);

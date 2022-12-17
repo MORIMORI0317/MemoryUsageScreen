@@ -1,7 +1,7 @@
 plugins {
     id "com.github.johnrengelman.shadow" version "7.1.2"
     id 'com.matthewprenger.cursegradle' version '1.4.0'
-    id "com.modrinth.minotaur" version "2.1.2"
+    id "com.modrinth.minotaur" version "2.4.4"
 }
 
 architectury {
@@ -126,5 +126,22 @@ if (System.getenv('modrinthapikey') != null && "${modrinth_id}" != '') {
         uploadFile = file("${project.buildDir}/libs/${rootProject.archives_base_name}-${project.name}-mc${rootProject.minecraft_version}-${project.mod_version}.jar")
         gameVersions = List.of(project.support_versions.split(","))
         loaders = ["fabric", "quilt"]
+    }
+}
+
+if (System.getenv('modrinthapikey') != null && "${project.modrinth_id}" != '') {
+    modrinth {
+        token = System.getenv('modrinthapikey')
+        projectId = "${rootProject.modrinth_id}"
+        versionName = "${rootProject.mod_display_name}-${rootProject.minecraft_version}-${project.mod_version}-Fabric"
+        versionNumber = "${rootProject.minecraft_version}-${project.mod_version}-Fabric"
+        versionType = "${project.release_type}"
+        uploadFile = file("${project.buildDir}/libs/${rootProject.archives_base_name}-${project.name}-mc${rootProject.minecraft_version}-${project.mod_version}.jar")
+        gameVersions = List.of(project.support_versions.split(","))
+        loaders = ["fabric", "quilt"]
+        dependencies {
+            required.project("P7dR8mSH")//Fabric API
+            optional.project("9s6osm5g")//Cloth Config API
+        }
     }
 }
