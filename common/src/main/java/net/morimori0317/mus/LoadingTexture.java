@@ -22,9 +22,9 @@ public class LoadingTexture extends SimpleTexture {
 
     protected TextureImage getTextureImage(ResourceManager resourceManager) {
         Minecraft minecraft = Minecraft.getInstance();
-        VanillaPackResources vanillaPackResources = minecraft.getClientPackSource().getVanillaPack();
+        VanillaPackResources vanillaPackResources = minecraft.getVanillaPackResources();
 
-        try (InputStream inputStream = vanillaPackResources.getResource(PackType.CLIENT_RESOURCES, location)) {
+        try (InputStream inputStream = vanillaPackResources.getResource(PackType.CLIENT_RESOURCES, location).get()) {
             return new TextureImage(new TextureMetadataSection(true, true), NativeImage.read(inputStream));
         } catch (IOException ex) {
             return new TextureImage(ex);
