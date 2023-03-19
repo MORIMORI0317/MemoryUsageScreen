@@ -83,7 +83,8 @@ curseforge {
         project {
             id = "${rootProject.curesforge_id}"
 
-            changelog = '';
+            changelogType = 'markdown'
+            changelog = file('../LATEST_CHANGELOG.md')
 
             releaseType = "${rootProject.release_type}"
             addGameVersion "${rootProject.minecraft_version}"
@@ -119,5 +120,6 @@ if (System.getenv('modrinthapikey') != null && "${project.modrinth_id}" != '') {
         uploadFile = file("${project.buildDir}/libs/${rootProject.archives_base_name}-${project.name}-mc${rootProject.minecraft_version}-${project.mod_version}.jar")
         gameVersions = List.of(project.support_versions.split(","))
         loaders = ["forge"]
+        changelog = file('../LATEST_CHANGELOG.md').text
     }
 }

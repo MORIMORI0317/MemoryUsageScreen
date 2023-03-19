@@ -1,0 +1,20 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    uses: TeamFelnull/actions-reusable-workflows/.github/workflows/mcmod-release.yml@master
+    with:
+      build_tasks: "build curseforge modrinth"
+    secrets:
+      curseforge_token: ${{ secrets.CURESFORGEAPIKEY }}
+      modrinth_token: ${{ secrets.MODRINTH }}
+
+  postRelease:
+    name: Update after release
+    needs: release
+    uses: TeamFelnull/actions-reusable-workflows/.github/workflows/mcmod-post-release.yml@master

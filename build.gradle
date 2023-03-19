@@ -1,6 +1,17 @@
 plugins {
     id "architectury-plugin" version "3.4.+"
     id "dev.architectury.loom" version "1.0.+" apply false
+    id 'org.jetbrains.changelog' version "2.0.0"
+}
+
+changelog {
+    repositoryUrl = rootProject.repository_url
+    introduction = """
+    Changelog to track updates for this mod.  
+    Add your changes to Unreleased if you want to commit.  
+    Please write according to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+    """
+    combinePreReleases = false
 }
 
 architectury {
