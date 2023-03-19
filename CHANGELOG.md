@@ -6,7 +6,7 @@ Changelog to track updates for this mod.
 ## [Unreleased]
 
 ### Added
-
+- Add fr_fr by Myuui#6614
 ### Changed
 
 ### Deprecated
