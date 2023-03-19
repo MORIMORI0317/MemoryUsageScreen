@@ -1,10 +1,11 @@
 {
   "homepage": "https://github.com/MORIMORI0317/MemoryUsageScreen/releases",
   "1.19.4": {
-    "1.8.0": "Changed\n- Port MC1.19.4\n"
+    "1.8.0": "Changed\n- Port MC1.19.4\n",
+    "1.8.1": "Added\n- Add fr_fr by Myuui#6614\n"
   },
   "promos": {
-    "1.19.4-latest": "1.8.0",
-    "1.19.4-recommended": "1.8.0"
+    "1.19.4-latest": "1.8.1",
+    "1.19.4-recommended": "1.8.1"
   }
 }
