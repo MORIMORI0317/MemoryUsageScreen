@@ -1,0 +1,8 @@
+{
+  "text.autoconfig.memoryusagescreen.title": "Configuration de l'écran d'utilisation de la mémoire",
+  "text.autoconfig.memoryusagescreen.option.enableInitLoadingScreen": "Enable display on the initial loading screen",
+  "text.autoconfig.memoryusagescreen.option.enableWorldLoadingScreen": "Active l'affichage sur l'écran de chargement initial",
+  "text.autoconfig.memoryusagescreen.option.enableToggleMode": "Activer le mode d'affichage à bascule",
+  "key.categories.memoryusagescreen": "Écran d'utilisation de la mémoire",
+  "key.memoryusagescreen.show": "Afficher l'utilisation de la mémoire"
+}
