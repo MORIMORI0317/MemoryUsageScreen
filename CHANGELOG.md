@@ -8,7 +8,7 @@ Changelog to track updates for this mod.
 ### Added
 
 ### Changed
-- Port MC1.20
+
 ### Deprecated
 
 ### Removed
@@ -16,6 +16,11 @@ Changelog to track updates for this mod.
 ### Fixed
 
 ### Security
+
+## [1.9.0] - 2023-06-16
+
+### Changed
+- Port MC1.20
 
 ## [1.8.1] - 2023-03-19
 
@@ -27,6 +32,7 @@ Changelog to track updates for this mod.
 ### Changed
 - Port MC1.19.4
 
-[Unreleased]: https://github.com/MORIMORI0317/MemoryUsageScreen/compare/v1.8.1...HEAD
+[Unreleased]: https://github.com/MORIMORI0317/MemoryUsageScreen/compare/v1.9.0...HEAD
+[1.9.0]: https://github.com/MORIMORI0317/MemoryUsageScreen/compare/v1.8.1...v1.9.0
 [1.8.1]: https://github.com/MORIMORI0317/MemoryUsageScreen/compare/v1.8.0...v1.8.1
 [1.8.0]: https://github.com/MORIMORI0317/MemoryUsageScreen/commits/v1.8.0
