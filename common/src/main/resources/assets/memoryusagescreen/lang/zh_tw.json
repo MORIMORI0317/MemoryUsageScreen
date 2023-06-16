@@ -1,0 +1,8 @@
+{
+  "text.autoconfig.memoryusagescreen.title": "記憶體使用畫面配置",
+  "text.autoconfig.memoryusagescreen.option.enableInitLoadingScreen": "允許在初始載入畫面上顯示",
+  "text.autoconfig.memoryusagescreen.option.enableWorldLoadingScreen": "允許在世界載入畫面上顯示",
+  "text.autoconfig.memoryusagescreen.option.enableToggleMode": "允許切換顯示模式",
+  "key.categories.memoryusagescreen": "記憶體使用畫面",
+  "key.memoryusagescreen.show": "顯示記憶體使用"
+}
