@@ -1,8 +1,8 @@
 package net.morimori0317.mus.mixin;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.LoadingOverlay;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -21,12 +21,12 @@ public abstract class LoadingOverlayMixin {
     @Shadow
     private long fadeOutStart;
 
-    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screens/LoadingOverlay;drawProgressBar(Lcom/mojang/blaze3d/vertex/PoseStack;IIIIF)V"))
-    private void render(PoseStack poseStack, int i, int j, float f, CallbackInfo ci) {
+    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screens/LoadingOverlay;drawProgressBar(Lnet/minecraft/client/gui/GuiGraphics;IIIIF)V"))
+    private void render(GuiGraphics guiGraphics, int i, int j, float f, CallbackInfo ci) {
         if (MemoryUsageScreen.getConfig().isEnableInitLoadingScreen()) {
             long m = Util.getMillis();
             float g = this.fadeOutStart > -1L ? (float) (m - this.fadeOutStart) / 1000.0F : -1.0F;
-            MemoryUsageScreenAPI.getInstance().getOverlay().render(poseStack, 1.0F - Mth.clamp(g, 0.0F, 1.0F), false, false, f);
+            MemoryUsageScreenAPI.getInstance().getOverlay().render(guiGraphics, 1.0F - Mth.clamp(g, 0.0F, 1.0F), false, false, f);
         }
     }
 

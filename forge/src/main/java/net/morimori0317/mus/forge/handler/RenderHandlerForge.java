@@ -9,6 +9,6 @@ public class RenderHandlerForge {
     @SubscribeEvent
     public static void onScreenRenderPost(ScreenEvent.Render.Post e) {
         if (MemoryUsageScreenAPI.getInstance().isEnableScreen(e.getScreen()))
-            RenderHandler.onScreenRender(e.getPoseStack(), e.getScreen(), e.getPartialTick());
+            RenderHandler.onScreenRender(e.getGuiGraphics(), e.getScreen(), e.getPartialTick());
     }
 }

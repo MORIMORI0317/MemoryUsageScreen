@@ -1,15 +1,12 @@
 package net.morimori0317.mus.fabric.handler;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiComponent;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.morimori0317.mus.handler.ClientHandler;
 import net.morimori0317.mus.handler.RenderHandler;
-
-import java.util.Arrays;
 
 public class RenderHandlerFabric {
     public static void init() {
@@ -24,7 +21,7 @@ public class RenderHandlerFabric {
         ClientHandler.onScreenInit(screen);
     }
 
-    private static void onHudRender(PoseStack matrixStack, float tickDelta) {
-        RenderHandler.onHudRender(matrixStack, tickDelta);
+    private static void onHudRender(GuiGraphics guiGraphics, float tickDelta) {
+        RenderHandler.onHudRender(guiGraphics, tickDelta);
     }
 }
