@@ -1,11 +1,11 @@
 {
-  "text.autoconfig.memoryusagescreen.title": "Настройки Memory Usage Screen",
+  "text.autoconfig.memoryusagescreen.title": "Настройки экрана использования памяти",
   "text.autoconfig.memoryusagescreen.option.enableInitLoadingScreen": "Отображение на экране загрузки игры",
   "text.autoconfig.memoryusagescreen.option.enableWorldLoadingScreen": "Отображение на экране загрузки мира",
   "text.autoconfig.memoryusagescreen.option.enableToggleMode": "Режим переключения",
-  "key.categories.memoryusagescreen": "Memory Usage Screen",
+  "key.categories.memoryusagescreen": "Экран использования памяти",
   "key.memoryusagescreen.show": "Показать использование памяти",
 
   "modmenu.summaryTranslation.memoryusagescreen": "Отображение шкалы использования памяти.",
-  "modmenu.descriptionTranslation.memoryusagescreen": "Отображение шкалы текущего использования оперативной памяти во время загрузки игры или мира.\nОчень перегруженной шкалы..."
+  "modmenu.descriptionTranslation.memoryusagescreen": "Отображение шкалы текущего использования оперативной памяти во время загрузки игры или мира.\nОчень перегруженной шкалы…"
 }
